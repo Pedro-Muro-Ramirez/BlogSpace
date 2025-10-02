@@ -1,3 +1,7 @@
+const postForm = document.getElementById('post-form')
+const postTitle = document.getElementById('post-title')
+const postBody = document.getElementById('post-body')
+
 fetch("https://apis.scrimba.com/jsonplaceholder/posts")
     .then(response => response.json())
     .then(data => {
@@ -10,3 +14,12 @@ fetch("https://apis.scrimba.com/jsonplaceholder/posts")
         })
         document.getElementById('posts-container').innerHTML = postText
     })
+
+postForm.addEventListener("submit", function(e){
+    e.preventDefault()
+    let contentObj = {
+        title: postTitle.value,
+        body: postBody.value
+    }
+    console.log(contentObj)
+})
